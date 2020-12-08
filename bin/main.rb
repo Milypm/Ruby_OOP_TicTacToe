@@ -1,1 +1,2 @@
-puts "Hello! we are working on the setup"
+#!/usr/bin/env ruby
+puts 'Hello World!'
