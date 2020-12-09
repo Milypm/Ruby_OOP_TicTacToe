@@ -1,9 +1,4 @@
-# frozen_string_literal: true
-
 # !/usr/bin/env ruby
-
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
 
 @position = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 def get_name(name)
@@ -17,18 +12,16 @@ end
 
 def display_board
   board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-  puts "
-                       _________________
-                      |     |     |     |
-                      |  #{board[0][0]}  |  #{board[0][1]}  |  #{board[0][2]}  |
-                      |_____|_____|_____|
-                      |     |     |     |
-                      |  #{board[1][0]}  |  #{board[1][1]}  |  #{board[1][2]}  |
-                      |_____|_____|_____|
-                      |     |     |     |
-                      |  #{board[2][0]}  |  #{board[2][1]}  |  #{board[2][2]}  |
-                      |_____|_____|_____|
-  "
+  puts "             _________________
+                    |     |     |     |
+                    |  #{board[0][0]}  |  #{board[0][1]}  |  #{board[0][2]}  |
+                    |_____|_____|_____|
+                    |     |     |     |
+                    |  #{board[1][0]}  |  #{board[1][1]}  |  #{board[1][2]}  |
+                    |_____|_____|_____|
+                    |     |     |     |
+                    |  #{board[2][0]}  |  #{board[2][1]}  |  #{board[2][2]}  |
+                    |_____|_____|_____|"
 end
 
 def current_player(player)
@@ -72,6 +65,3 @@ until game_ended
     game_ended = true
   end
 end
-
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength
