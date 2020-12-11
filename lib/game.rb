@@ -26,10 +26,6 @@ class Game
             '4' => [1,0], '5' => [1,1], '6' => [1,2],
             '7' => [2,0], '8' => [2,1], '9' => [2,2]
     }
-    # move = {'1' => @board[0][0], '2' => @board[0][1], '3' => @board[0][2],
-    #         '4' => @board[1][0], '5' => @board[1][1], '6' => @board[1][2],
-    #         '7' => @board[2][0], '8' => @board[2][1], '9' => @board[2][2]
-    # }
     position[choice]
   end
    
@@ -69,26 +65,14 @@ class Game
     false
   end
 
-  def is_draw?
-  end
-
   def is_board_full?
+    return false if (@board.flatten).any?(Numeric)
+    true
   end
+
+  def is_draw?
+    return true if !is_win? && is_board_full?
+    false
+  end
+
 end
-
-game = Game.new
-game.reset_board
-choice = '3'
-position = game.make_move(choice)
-game.update_board(position, 'X')
-
-choice = '5'
-position = game.make_move(choice)
-game.update_board(position, 'O')
-
-choice = '7'
-position = game.make_move(choice)
-game.update_board(position, 'X')
-
-p game.board
-p game.is_win?
