@@ -3,9 +3,16 @@ require_relative '../lib/game.rb'
 require_relative '../lib/player.rb'
 
 new_game = Game.new
+player_one = Player.new('', 'X')
+player_two = Player.new('', 'O')
+positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+position = ''
+
+#Created the gap method to replace the repeated blank lines
 def gap
   2.times { puts ''}
 end
+
 def valid_name?(name)
   return true unless name == ''
   false
@@ -26,6 +33,23 @@ def print_board(new_game)
   "
 end
 
+#Created prompt method
+def prompt_user(new_player, code)
+  while true
+    print "Player #{code} enter your name: "
+    player_name = gets.chomp
+    if valid_name?(player_name)
+      new_player.name = player_name
+      puts "#{player_name} your symbol is #{new_player.symbol}"
+      break
+    else
+      puts 'Invalid name, try again'
+      gap
+      next
+    end
+  end
+end
+
 gap
 print '                  TIC TAC TOE'
 puts "
@@ -41,52 +65,28 @@ puts "
               |_____|_____|_____|
 "
 gap
-while true
-  print 'Player 1 enter your name: '
-  player_one_name = gets.chomp
-  if valid_name?(player_one_name)
-    player_one = Player.new(player_one_name, 'X')
-    puts "#{player_one_name} your symbol is #{player_one_name}"
-    break
-  else
-    puts 'Invalid name, try again'
-    gap
-    next
-  end
-end
-while true
-  puts ''
-  print 'Player 2 enter your name: '
-  player_two_name = gets.chomp
-  if valid_name?(player_two_name)
-    player_two = Player.new(player_two_name, 'O')
-    puts "#{player_two_name} your symbol is 'O'"
-    break
-  else
-    puts 'Invalid name, try again'
-    puts ''
-    next
-  end
-end
+#Created the prompt_user method and refactored out the two while loops
+prompt_user(player_one, 1)
+prompt_user(player_two, 2)
+
 gap
 puts "     ===============LET'S PLAY!==============="
 gap
 new_game.reset_board
 game_ended = false
 is_player_one_move = true
-positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-position = ''
+
 # counter = 0
 until game_ended
   symbol = is_player_one_move ? 'X' : 'O'
   current_player = ''
   if is_player_one_move
-    print "#{player_one_name} select a position from #{positions}: "
-    current_player = player_one_name
+    print "#{player_one.name} select a position from #{positions}: "
+    current_player = player_one.name
     # counter += 1
   else
-    print "#{player_two_name} select a position from #{positions}: "
-    current_player = player_two_name
+    print "#{player_two.name} select a position from #{positions}: "
+    current_player = player_two.name
   end
 
   while true
@@ -107,7 +107,7 @@ until game_ended
   end
 
   print_board(new_game)
-  gap
+  
   if new_game.is_win? && symbol == 'X'
     puts "Congratz #{current_player}! You're the Winner :)"
     game_ended = true
