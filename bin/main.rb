@@ -1,9 +1,7 @@
 # !/usr/bin/env ruby
 
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Style/GuardClause
 
 require_relative '../lib/game'
@@ -136,7 +134,5 @@ until game_ended
 end
 
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Style/GuardClause
