@@ -17,7 +17,7 @@ class Game
   end
 
   def is_choice_valid?(choice)
-    return true if [1, 2, 3, 4, 5, 6, 7, 8, 9].include?(choice)
+    return true if ['1', '2', '3', '4', '5', '6', '7', '8', '9'].include?(choice)
     false
   end
 
@@ -28,10 +28,10 @@ class Game
     }
     position[choice]
   end
-   
+ 
   def is_move_valid?(position)
-    return false if @board[position[0]][position[1]] != 'X' || @board[position[0]][position[1]] != 'O'
-    true
+    return true if @board[position[0]][position[1]] != 'X' && @board[position[0]][position[1]] != 'O'
+    false
   end
   
   def update_board(move, symbol)
