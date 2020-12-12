@@ -1,6 +1,8 @@
-# frozen_string_literal: true
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/GuardClause
 
-# This is the Player class, used to instantiate a new player.
 class Game
   attr_reader :board
 
@@ -88,3 +90,7 @@ class Game
 end
 
 # rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Style/GuardClause
