@@ -81,7 +81,7 @@ class Game
   end
 
   def board_full?
-    return false if (@board.flatten).any?(Numeric)
+    return false if @board.flatten.any?(Numeric)
 
     true
   end
