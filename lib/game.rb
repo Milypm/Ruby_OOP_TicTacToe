@@ -1,7 +1,3 @@
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Style/GuardClause
-
 class Game
   attr_reader :board
 
@@ -87,7 +83,3 @@ class Game
     true
   end
 end
-
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Style/GuardClause
