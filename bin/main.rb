@@ -1,4 +1,9 @@
 # !/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/AbcSize
+
 require_relative '../lib/game.rb'
 require_relative '../lib/player.rb'
 
@@ -14,7 +19,7 @@ def gap
 end
 
 def valid_name?(name)
-  return true unless name == ''
+  return true unless name.empty?
   false
 end
 
@@ -37,7 +42,7 @@ end
 def prompt_user(new_player, code)
   while true
     print "Player #{code} enter your name: "
-    new_player.name = gets.chomp
+    new_player.name = gets.chomp.strip
     if valid_name?(new_player.name)
       puts "#{new_player.name} your symbol is #{new_player.symbol}"
       break
@@ -86,9 +91,9 @@ until game_ended
 
   while true
     position = gets.chomp
-    if new_game.is_choice_valid?(position)
+    if new_game.choice_valid?(position)
       spot = new_game.get_spot(position)
-      if new_game.is_spot_valid?(spot)
+      if new_game.spot_valid?(spot)
         new_game.update_board(spot, symbol)
         positions.delete(position.to_i)
         break
@@ -103,15 +108,15 @@ until game_ended
 
   print_board(new_game)
   
-  if new_game.is_win? && symbol == 'X'
+  if new_game.win? && symbol == 'X'
     puts "Congratz #{current_player}! You're the Winner :)"
     gap
     game_ended = true
-  elsif new_game.is_win? && symbol == 'O'
+  elsif new_game.win? && symbol == 'O'
     puts "Congratz #{current_player}! You're the Winner :)"
     gap
     game_ended = true
-  elsif new_game.is_draw?
+  elsif new_game.draw?
     puts "It's a draw!"
     gap
     game_ended = true
@@ -135,3 +140,5 @@ until game_ended
     end
   end
 end
+
+# rubocop:disable Metrics/AbcSize
