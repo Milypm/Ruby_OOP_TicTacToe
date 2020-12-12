@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize
-
 # This is the Player class, used to instantiate a new player.
 class Game
   attr_reader :board
