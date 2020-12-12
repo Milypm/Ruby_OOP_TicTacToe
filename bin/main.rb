@@ -37,14 +37,12 @@ end
 def prompt_user(new_player, code)
   while true
     print "Player #{code} enter your name: "
-    player_name = gets.chomp
-    if valid_name?(player_name)
-      new_player.name = player_name
-      puts "#{player_name} your symbol is #{new_player.symbol}"
+    new_player.name = gets.chomp
+    if valid_name?(new_player.name)
+      puts "#{new_player.name} your symbol is #{new_player.symbol}"
       break
     else
       puts 'Invalid name, try again'
-      gap
       next
     end
   end
@@ -67,23 +65,20 @@ puts "
 gap
 #Created the prompt_user method and refactored out the two while loops
 prompt_user(player_one, 1)
+gap
 prompt_user(player_two, 2)
-
 gap
 puts "     ===============LET'S PLAY!==============="
 gap
 new_game.reset_board
 game_ended = false
 is_player_one_move = true
-
-# counter = 0
 until game_ended
   symbol = is_player_one_move ? 'X' : 'O'
   current_player = ''
   if is_player_one_move
     print "#{player_one.name} select a position from #{positions}: "
     current_player = player_one.name
-    # counter += 1
   else
     print "#{player_two.name} select a position from #{positions}: "
     current_player = player_two.name
@@ -110,26 +105,33 @@ until game_ended
   
   if new_game.is_win? && symbol == 'X'
     puts "Congratz #{current_player}! You're the Winner :)"
+    gap
     game_ended = true
   elsif new_game.is_win? && symbol == 'O'
     puts "Congratz #{current_player}! You're the Winner :)"
+    gap
+    game_ended = true
+  elsif new_game.is_draw?
+    puts "It's a draw!"
+    gap
     game_ended = true
   else
-    if new_game.is_draw?
-      puts "It's a draw!"
-      game_ended = true
-    else
-      is_player_one_move = !is_player_one_move
-    end
+    is_player_one_move = !is_player_one_move
   end
-  gap
 #Prompt User to play on
   if game_ended
-    print "Do you want to continue playing? , Enter 'Y' to continue or any key to exit :  "
+    print "Do you want to continue playing? , enter 'Y' to continue or any key to exit :  "
     response = gets.chomp.downcase
     game_ended = response =='y' ? false : true
     new_game.reset_board
     positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    gap
+    if game_ended
+      puts "Thanks for playing, goodbye!"
+      gap
+    else
+      puts "======== Welcome to your new game ========"
+      print_board(new_game)
+    end
   end
-
 end

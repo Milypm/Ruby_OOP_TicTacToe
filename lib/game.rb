@@ -75,5 +75,5 @@ class Game
     return false if (@board.flatten).any?(Numeric)
     true
   end
-  
+
 end
