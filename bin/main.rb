@@ -1,4 +1,4 @@
-# !/usr/bin/env ruby
+#!/usr/bin/env ruby
 
 require_relative '../lib/game'
 require_relative '../lib/player'
@@ -117,5 +117,6 @@ until game_ended
   else
     puts '======== Welcome to your new game ========'
     print_board(new_game)
+    puts ''
   end
 end
