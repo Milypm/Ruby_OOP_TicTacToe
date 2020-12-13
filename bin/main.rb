@@ -4,6 +4,7 @@ require_relative '../lib/game'
 require_relative '../lib/player'
 
 new_game = Game.new
+new_game.reset_board
 player_one = Player.new('', 'X')
 player_two = Player.new('', 'O')
 positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -46,19 +47,9 @@ def prompt_user(new_player, code)
 end
 
 gap
-print '                  TIC TAC TOE'
-puts "
-               _________________
-              |     |     |     |
-              |  #{new_game.board[0][0]}   |  #{new_game.board[0][1]}   |  #{new_game.board[0][2]}   |
-              |_____|_____|_____|
-              |     |     |     |
-              |  #{new_game.board[1][0]}   |  #{new_game.board[1][1]}   |  #{new_game.board[1][2]}   |
-              |_____|_____|_____|
-              |     |     |     |
-              |  #{new_game.board[2][0]}   |  #{new_game.board[2][1]}   |  #{new_game.board[2][2]}   |
-              |_____|_____|_____|
-"
+print '      TIC TAC TOE'
+puts ''
+print_board(new_game)
 gap
 prompt_user(player_one, 1)
 gap
@@ -66,17 +57,16 @@ prompt_user(player_two, 2)
 gap
 puts "     ===============LET'S PLAY!==============="
 gap
-new_game.reset_board
 game_ended = false
 is_player_one_move = true
 until game_ended
   symbol = is_player_one_move ? 'X' : 'O'
   current_player = ''
   if is_player_one_move
-    print "#{player_one.name} select a position from #{positions}: "
+    print "#{player_one.name} select a move from the list of available moves #{positions}: "
     current_player = player_one.name
   else
-    print "#{player_two.name} select a position from #{positions}: "
+    print "#{player_two.name} select a move from the list of available moves #{positions}: "
     current_player = player_two.name
   end
   loop do
@@ -84,15 +74,16 @@ until game_ended
     if new_game.choice_valid?(position)
       spot = new_game.get_spot(position)
     else
-      print "#{current_player} Invalid position, try another one : "
+      print "#{current_player} Invalid move, try another one from the list of available moves #{positions}: "
       next
     end
     if new_game.spot_valid?(spot)
       new_game.update_board(spot, symbol)
       positions.delete(position.to_i)
+      puts 'Move is valid, below is your move on the board.'
       break
     else
-      print "#{current_player} That spot is already taken!, pick another one : "
+      print "#{current_player} That spot is already taken!, pick another one from the list of available moves #{positions}: "
     end
   end
   print_board(new_game)
@@ -106,7 +97,7 @@ until game_ended
     gap
     game_ended = true
   elsif new_game.draw?
-    puts "It's a draw!"
+    puts "#{player_one.name} and #{player_two.name} , it's a draw!"
     gap
     game_ended = true
   else
