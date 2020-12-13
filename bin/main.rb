@@ -83,7 +83,7 @@ until game_ended
       puts 'Move is valid, below is your move on the board.'
       break
     else
-      print "#{current_player} That spot is already taken!, pick another one from the list of available moves #{positions}: "
+      print "#{current_player} That spot is already taken!, pick one from the list of available moves #{positions}: "
     end
   end
   print_board(new_game)
