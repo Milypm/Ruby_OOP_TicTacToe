@@ -15,7 +15,6 @@ To get a local copy up and running follow these simple steps.
 * If you're using latest version of git.
 * Clone this url [Tic-Tac-Toe](https://github.com/Milypm/Ruby_OOP_TicTacToe.git) on your local host.
 * Unzip and open the folder that contains the main.rb file and run the command line in terminal:
--Run irb
 -Type: main.rb (if you are already on the 'bin' folder, if not type: bin/main.rb)
 * The program (game) should display now on the terminal
 
