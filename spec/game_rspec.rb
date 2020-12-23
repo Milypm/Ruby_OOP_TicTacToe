@@ -5,7 +5,7 @@ describe Game do
   describe '#initialize' do
     it 'create empty board (array)' do
       new_game
-      expect(new_game.board.instance_of? Array).to be_truthy
+      expect(new_game.board.instance_of?(Array)).to be_truthy
     end
   end
   describe '#reset_board' do
