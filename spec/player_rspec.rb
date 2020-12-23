@@ -8,11 +8,9 @@ describe Player do
     it 'set the name for player' do
       expect(player_1.name).to eql('Nick')
     end
-
     it 'set the symbol for player one' do
       expect(player_1.symbol).to eql('X')
     end
-
     it 'set the symbol for player two' do
       expect(player_2.symbol).to eql('O')
     end
