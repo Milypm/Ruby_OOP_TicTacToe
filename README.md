@@ -35,6 +35,12 @@ To get a local copy up and running follow these simple steps.
 - After each move your symbol will be displayed on the board in the position you choose.
 - Keep making the moves until when one of you wins or a draw is reached if all moves have been exhausted and there is no winner.
 
+## Testing with RSpec
+- Verify that you have RSpec installed: go to the Terminal/Command line and type: 'rspec -v' or 'rspec --version'.
+- To install Rspec: go to the Terminal/Command line and type: 'gem install rspec', you can now verify the version installed with 'rspec -v' or 'rspec --version'.
+- Open the root directory for this repository ('Ruby_OOP_TicTacToe'):
+    - For running RSpecs on both 'game.rb' and 'player.rb 'files, type: rspec
+
 ## Authors
 **Galiwango Ananiya**
 - GitHub: [@gango-anan](https://github.com/gango-anan)
